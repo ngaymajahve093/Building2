@@ -29,6 +29,7 @@ namespace EthernetTxRxTest2
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lb_ipAdress = new System.Windows.Forms.Label();
             this.txb_ipAdress = new System.Windows.Forms.TextBox();
             this.lb_port = new System.Windows.Forms.Label();
@@ -38,6 +39,7 @@ namespace EthernetTxRxTest2
             this.btn_sent = new System.Windows.Forms.Button();
             this.lb_receiver = new System.Windows.Forms.Label();
             this.listb_receiver = new System.Windows.Forms.ListBox();
+            this.tim100 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lb_ipAdress
@@ -127,6 +129,11 @@ namespace EthernetTxRxTest2
             this.listb_receiver.Size = new System.Drawing.Size(576, 186);
             this.listb_receiver.TabIndex = 5;
             // 
+            // tim100
+            // 
+            this.tim100.Enabled = true;
+            this.tim100.Tick += new System.EventHandler(this.tim100_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,6 +150,7 @@ namespace EthernetTxRxTest2
             this.Controls.Add(this.lb_ipAdress);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -160,6 +168,7 @@ namespace EthernetTxRxTest2
         private System.Windows.Forms.Button btn_sent;
         private System.Windows.Forms.Label lb_receiver;
         private System.Windows.Forms.ListBox listb_receiver;
+        public System.Windows.Forms.Timer tim100;
     }
 }
 

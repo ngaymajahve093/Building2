@@ -14,6 +14,8 @@ namespace EthernetTxRxTest2
 {
     public partial class Form1 : Form
     {
+        Thread receiverThread;
+        UdpClient udpClient = new UdpClient(8080);
         public Form1()
         {
             InitializeComponent();
@@ -22,14 +24,13 @@ namespace EthernetTxRxTest2
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            Thread receiverThread = new Thread(new ThreadStart(runReciver));
+            receiverThread = new Thread(new ThreadStart(runReciver));
             receiverThread.Start();
         }
 
 
         private void runReciver()
-        {
-            UdpClient udpClient =new UdpClient(8080);
+        {           
             while (true)
             {
                 try
@@ -62,7 +63,6 @@ namespace EthernetTxRxTest2
         private void btn_sent_Click(object sender, EventArgs e)
         {
             Console.WriteLine("press SENT or ENTER");
-            UdpClient udpClient = new UdpClient();
             udpClient.Connect(txb_ipAdress.Text, Convert.ToInt32(txb_port.Text));
             byte[] senddata = Encoding.ASCII.GetBytes(txb_message.Text);
             udpClient.Send(senddata, senddata.Length);
@@ -76,6 +76,16 @@ namespace EthernetTxRxTest2
             {
                 btn_sent_Click(this,new EventArgs());
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            receiverThread.Abort();
+        }
+
+        private void tim100_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }
