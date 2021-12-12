@@ -38,6 +38,16 @@ namespace EthernetTxRxTest2
                     byte[] returnData = udpClient.Receive(ref iPEndPoint);
                     string Datareceiver = Encoding.ASCII.GetString(returnData);
                     Console.WriteLine(Encoding.ASCII.GetString(returnData));
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
+
+
+                        listb_receiver.Items.Add(iPEndPoint.Address.ToString() + ": " + Datareceiver);
+                        listb_receiver.SelectedIndex = listb_receiver.Items.Count - 1;
+                        //listb_receiver.SelectedIndex = -1;
+
+
+                    }));
 
                 }
                 catch (Exception e)
@@ -52,6 +62,12 @@ namespace EthernetTxRxTest2
         private void btn_sent_Click(object sender, EventArgs e)
         {
             Console.WriteLine("press SENT or ENTER");
+            UdpClient udpClient = new UdpClient();
+            udpClient.Connect(txb_ipAdress.Text, Convert.ToInt32(txb_port.Text));
+            byte[] senddata = Encoding.ASCII.GetBytes(txb_message.Text);
+            udpClient.Send(senddata, senddata.Length);
+            txb_message.Text = "";
+
         }
 
         private void txb_message_KeyDown(object sender, KeyEventArgs e)
