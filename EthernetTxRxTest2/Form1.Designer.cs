@@ -33,8 +33,9 @@ namespace EthernetTxRxTest2
             this.txb_ipAdress = new System.Windows.Forms.TextBox();
             this.lb_port = new System.Windows.Forms.Label();
             this.txb_port = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lb_message = new System.Windows.Forms.Label();
+            this.txb_message = new System.Windows.Forms.TextBox();
+            this.btn_sent = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lb_ipAdress
@@ -50,7 +51,7 @@ namespace EthernetTxRxTest2
             // txb_ipAdress
             // 
             this.txb_ipAdress.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_ipAdress.Location = new System.Drawing.Point(129, 6);
+            this.txb_ipAdress.Location = new System.Drawing.Point(119, 6);
             this.txb_ipAdress.Name = "txb_ipAdress";
             this.txb_ipAdress.Size = new System.Drawing.Size(100, 24);
             this.txb_ipAdress.TabIndex = 1;
@@ -68,38 +69,53 @@ namespace EthernetTxRxTest2
             // txb_port
             // 
             this.txb_port.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_port.Location = new System.Drawing.Point(129, 44);
+            this.txb_port.Location = new System.Drawing.Point(119, 44);
             this.txb_port.Name = "txb_port";
             this.txb_port.Size = new System.Drawing.Size(100, 24);
-            this.txb_port.TabIndex = 1;
+            this.txb_port.TabIndex = 2;
             // 
-            // label1
+            // lb_message
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 93);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 18);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Port:";
+            this.lb_message.AutoSize = true;
+            this.lb_message.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_message.Location = new System.Drawing.Point(12, 93);
+            this.lb_message.Name = "lb_message";
+            this.lb_message.Size = new System.Drawing.Size(73, 18);
+            this.lb_message.TabIndex = 0;
+            this.lb_message.Text = "Message:";
             // 
-            // textBox1
+            // txb_message
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(129, 90);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 24);
-            this.textBox1.TabIndex = 1;
+            this.txb_message.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_message.Location = new System.Drawing.Point(119, 90);
+            this.txb_message.Multiline = true;
+            this.txb_message.Name = "txb_message";
+            this.txb_message.Size = new System.Drawing.Size(565, 143);
+            this.txb_message.TabIndex = 3;
+            this.txb_message.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_message_KeyDown);
+            // 
+            // btn_sent
+            // 
+            this.btn_sent.AutoSize = true;
+            this.btn_sent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_sent.Location = new System.Drawing.Point(119, 239);
+            this.btn_sent.Name = "btn_sent";
+            this.btn_sent.Size = new System.Drawing.Size(100, 28);
+            this.btn_sent.TabIndex = 4;
+            this.btn_sent.Text = "SENT";
+            this.btn_sent.UseVisualStyleBackColor = true;
+            this.btn_sent.Click += new System.EventHandler(this.btn_sent_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(707, 450);
+            this.Controls.Add(this.btn_sent);
+            this.Controls.Add(this.txb_message);
             this.Controls.Add(this.txb_port);
             this.Controls.Add(this.txb_ipAdress);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lb_message);
             this.Controls.Add(this.lb_port);
             this.Controls.Add(this.lb_ipAdress);
             this.Name = "Form1";
@@ -116,8 +132,9 @@ namespace EthernetTxRxTest2
         private System.Windows.Forms.TextBox txb_ipAdress;
         private System.Windows.Forms.Label lb_port;
         private System.Windows.Forms.TextBox txb_port;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lb_message;
+        private System.Windows.Forms.TextBox txb_message;
+        private System.Windows.Forms.Button btn_sent;
     }
 }
 

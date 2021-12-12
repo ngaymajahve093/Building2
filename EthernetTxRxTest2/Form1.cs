@@ -36,7 +36,7 @@ namespace EthernetTxRxTest2
                 {
                     IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Any, 8080);
                     byte[] returnData = udpClient.Receive(ref iPEndPoint);
-                    Console.WriteLine(returnData.ToString());
+                    string Datareceiver = Encoding.ASCII.GetString(returnData);
                     Console.WriteLine(Encoding.ASCII.GetString(returnData));
 
                 }
@@ -46,6 +46,19 @@ namespace EthernetTxRxTest2
                     
                     break;
                 }
+            }
+        }
+
+        private void btn_sent_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("press SENT or ENTER");
+        }
+
+        private void txb_message_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_sent_Click(this,new EventArgs());
             }
         }
     }
