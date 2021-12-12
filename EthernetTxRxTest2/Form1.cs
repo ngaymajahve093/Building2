@@ -46,7 +46,7 @@ namespace EthernetTxRxTest2
                         listb_receiver.Items.Add(iPEndPoint.Address.ToString() + ": " + Datareceiver);
                         listb_receiver.SelectedIndex = listb_receiver.Items.Count - 1;
                         listb_receiver.SelectedIndex = -1;
-
+                        Console.WriteLine(Datareceiver);
 
                     }));
 
